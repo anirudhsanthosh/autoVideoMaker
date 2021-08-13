@@ -156,6 +156,29 @@ def color(txt,color = 'green'):
  
  return start + str(txt) + end
  
+def cprint(txt= '',color = 'green'):
+ 
+ colors = {
+ 	
+ 	  'reset' : 0,
+ 	  'black' : 30,
+ 	  'red' : 31,
+ 	  'green' : 32,
+ 	  'yellow' : 33,
+ 	  'blue' : 34,
+ 	  'magenta' : 35,
+ 	  'cyan' : 36,
+ 	  'white' : 37
+ }
+ 
+ #start = f'\e[1;{colors[color]}m'
+ # end = '\e[0m'
+ 
+ start = f'\033[0;{colors[color]}m'
+ end = '\033[0m'
+ 
+ print(start + str(txt) + end)
+ 
  
 def searchInList(array =[],search = ''):
  
@@ -164,3 +187,27 @@ def searchInList(array =[],search = ''):
  else:
   return -1
   
+def createNeccesoryFiles(files = []):
+ for fileToCreate in files:
+  fil = fileToCreate["path"]
+  if not os.path.exists(fil):
+   newPath = os.path.split(fil)[0]
+   if not os.path.exists( newPath ):
+    try:
+     os.makedirs(newPath)
+     print("path created",newPath)
+    except:
+     print("unable to create path",newPath)
+ 
+ for fileToCreate in files:
+  fil = fileToCreate["path"]
+  if not os.path.exists(fil):
+   newPath = os.path.split(fil)[0]
+   if os.path.exists( newPath ):
+    try:
+     f = open(fil,"w")
+     f.write(fileToCreate["default"])
+     f.close()
+     print("file created",fil)
+    except:
+     print("unable to create file",fil )

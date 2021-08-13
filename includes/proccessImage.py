@@ -1,6 +1,6 @@
 #Import required Image library
 from PIL import Image, ImageFilter, ImageDraw, ImageFont, ImageOps
-from dropshadow import dropShadow
+from includes.dropshadow import dropShadow
 
 def createTemplateImage(img,text,output):
  #Create an Image Object from an Image
@@ -66,7 +66,7 @@ def createTemplateImage(img,text,output):
    currentWidth = 0
    currentHeight = 0
    while currentWidth < previousWidth and (currentHeight < printable['maxHeight'] or currentWidth > previousWidth ):
-    font = ImageFont.truetype("Teko-Bold.ttf", size= size)
+    font = ImageFont.truetype("includes/Teko-Bold.ttf", size= size)
     currentWidth = font.getsize(printable['text'])[0]
     currentHeight = font.getsize(printable['text'])[1]
     size +=1
@@ -86,7 +86,7 @@ def createTemplateImage(img,text,output):
    currentWidth = 0
    currentHeight = 0
    while currentWidth < printable['width'] and currentHeight < printable['maxHeight']:
-    font = ImageFont.truetype("Teko-Bold.ttf", size= size)
+    font = ImageFont.truetype("includes/Teko-Bold.ttf", size= size)
     currentWidth = font.getsize(printable['text'])[0]
     currentHeight = font.getsize(printable['text'])[1]
     size +=1
@@ -95,7 +95,7 @@ def createTemplateImage(img,text,output):
    printable['size'] = size
    
   else:
-   font = ImageFont.truetype("Teko-Bold.ttf", size= printable['size'])
+   font = ImageFont.truetype("includes/Teko-Bold.ttf", size= printable['size'])
   
   font_width, font_height = font.getsize(printable['text'])
   new_width = printable['left'] 

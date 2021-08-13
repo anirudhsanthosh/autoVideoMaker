@@ -1,0 +1,65 @@
+[
+    {
+        "title": "Category- hard trolley  Qty",
+        "persistance": false,
+        "addUpName": null,
+        "value": "10",
+        "sum": 0
+    },
+    {
+        "title": "Category - soft trolley Qty",
+        "persistance": "y",
+        "addUpName": null,
+        "value": "1",
+        "sum": 0
+    },
+    {
+        "title": "Category - Rdfl Qty",
+        "persistance": "y",
+        "addUpName": null,
+        "value": "6",
+        "sum": 0
+    },
+    {
+        "title": "Category - Backpack Qty ",
+        "persistance": "y",
+        "addUpName": null,
+        "value": "1",
+        "sum": 0
+    },
+    {
+        "title": "PROMO articles Name and qty",
+        "persistance": "y",
+        "addUpName": null,
+        "value": " ",
+        "sum": 0
+    },
+    {
+        "title": "\n\n\nSafari sale value",
+        "persistance": "y",
+        "addUpName": "MTD Value",
+        "value": 26685,
+        "sum": 350000
+    },
+    {
+        "title": "VIP sale",
+        "persistance": "y",
+        "addUpName": "MTD Value",
+        "value": 45000,
+        "sum": 516500
+    },
+    {
+        "title": "American tourister",
+        "persistance": "y",
+        "addUpName": "MTD Value",
+        "value": 120000,
+        "sum": 1500000
+    },
+    {
+        "title": "Other brands",
+        "persistance": "y",
+        "addUpName": "MTD Value",
+        "value": 0,
+        "sum": 150000
+    }
+]

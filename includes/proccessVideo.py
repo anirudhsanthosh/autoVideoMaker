@@ -17,7 +17,7 @@ def createVideoFromTemplate(filename,audio,duration,output):
   os.system(command)
  
  """
- command = "ffmpeg -loop 1 -i '{0}' -i '{1}' -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -t {2} '{3}'".format( filename, audio, duration, output)
+ command = "ffmpeg  -loop 1 -i '{0}' -i '{1}' -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -t {2} -y '{3}'".format( filename, audio, duration, output)
  
 
  

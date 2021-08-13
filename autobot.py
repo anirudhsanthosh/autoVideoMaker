@@ -217,7 +217,7 @@ if(countOfOldlist == 0):
  #sendMessage(message)
  telegram_bot_sendtext(message)
 else:
- 
+   
    """
    
    check last game in oldlist array is in the list or not
@@ -240,7 +240,7 @@ else:
    """
    
    if helper.searchInList(gameList,LAST_GAME) == -1:
-    # if the last uploaded game is not in the first page list
+     # if the last uploaded game is not in the first page list
      #load next page from an1.com untile find that game
      itrator = 2
      loadgames = True
@@ -250,9 +250,15 @@ else:
       gameList.extend(newList)
       if helper.searchInList(gameList,lastgame) != -1:
        loadgames = False
-      
       itrator += 1
-     
+      if(itrator == 15):
+       
+       print("Too many times looped last game is not found ")
+       message = f"Too many times looped last game is not found \n last game: {lastgame}"
+       telegram_bot_sendtext(message)
+       exit()
+       
+   
    #modify gamelist slice it
    indexOfLastGame = helper.searchInList(gameList,lastgame)
    gameList = gameList[:indexOfLastGame]
