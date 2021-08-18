@@ -6,7 +6,7 @@ def createTextForImage(imageData):
  #title
  
  proccessedData.append({
-           	   'text' : imageData['name'].upper() + 'MOD APK',
+           	   'text' : imageData['name'].upper() + ' MOD APK',
            	   'size' : 'width',
            	   'top' : 530,
            	   'left' : 660,
@@ -177,7 +177,7 @@ def cprint(txt= '',color = 'green'):
  start = f'\033[0;{colors[color]}m'
  end = '\033[0m'
  
- print(start + str(txt) + end)
+ print(start , str(txt) , end)
  
  
 def searchInList(array =[],search = ''):

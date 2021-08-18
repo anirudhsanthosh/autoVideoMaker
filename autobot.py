@@ -167,7 +167,7 @@ for dir in dirs:
 # getting all local data
 
 #loading previous list of games
-print(color('fetching old game list','blue'))
+print( color('fetching old game list','blue') )
 filename = OLD_GAME_LIST
 oldlist = helper.readFile(filename)
 
