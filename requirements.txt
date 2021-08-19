@@ -1,0 +1,8 @@
+tqdm==4.59.0
+gTTS==2.2.2
+requests==2.25.1
+validators==0.18.2
+Telethon==1.21.1
+beautifulsoup4==4.9.3
+Pillow==8.3.1
+pyTelegramBotAPI==3.8.2

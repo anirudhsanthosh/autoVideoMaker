@@ -9,11 +9,12 @@ from includes.scrapper import downloadAudio
 from includes import proccessImage
 from includes import proccessVideo
 from includes.helper import color
+from includes.teleMessage import telegram_bot_sendtext
 
 from tqdm import tqdm
 
 import json
-
+import os
 
 # functions
 def proccessList(gameList):
@@ -102,7 +103,7 @@ def proccessList(gameList):
    
    helper.toast(str(i+1) +' / ' +str(len(gameList)) + ' completed')
    helper.notifi("video making",str(i+1) +' / ' +str(len(gameList)) + ' completed')
-
+   
 #main code
 
 # verify all dirs and files are in place
@@ -151,8 +152,82 @@ if(countOfOldlist == 0):
  # reverse game list for making the the first game last for download it last
  gameList.reverse()
  proccessList(gameList)
- 
- 
- 
+ os.system('termux-vibrate -d 2000 -f')
+ message = f"""
+ video making completed
+ videos created: {len(gameList)}
+ """
+ #sendMessage(message)
+ telegram_bot_sendtext(message)
+else:
+    
+   """
+   
+   check last game in oldlist array is in the list or not
+   find out the correct previous game
+   first reverse the old game list to make the last entry to first
+   
+   """
+   oldlist.reverse()
+   LAST_GAME = None 
+   for lastgame in oldlist :
+    serverData  = getGameContent(lastgame)
+    localData = allGameData[lastgame]
+    if serverData['version']==localData['version'] :
+     LAST_GAME = lastgame
+     break
+   print('last game found',LAST_GAME)
+   """
+      now we need to find the games which are uploaded after 
+      the last game in our list
+   """
+   if helper.searchInList(gameList,LAST_GAME) == -1:
+     # if the last uploaded game is not in the first page list
+     #load next page from an1.com untile find that game
+     itrator = 2
+     loadgames = True
+     while loadgames:
+      newurl = config.BASE_URL + config.PAGE + str(itrator) + '/'
+      newList = site.getIndividualGameLinks(newurl)
+      gameList.extend(newList)
+      if helper.searchInList(gameList,lastgame) != -1:
+       loadgames = False
+      itrator += 1
+      if(itrator == 15):
+       
+       print("Too many times looped last game is not found ")
+       message = f"Too many times looped last game is not found \n last game: {lastgame}"
+       telegram_bot_sendtext(message)
+       exit()
+     #modify gamelist slice it
+   indexOfLastGame = helper.searchInList(gameList,lastgame)
+   gameList = gameList[:indexOfLastGame]
+   gameList.reverse()
+   if len(gameList) > config.MAX_NUMBER_OF_GAMES:
+    slicingIndex = config.MAX_NUMBER_OF_GAMES
+    gameList = gameList[: slicingIndex]
+   
+   print('gamelist loaded total games:',len(gameList))
+   if len(gameList) == 0:
+    print('No new  game found')
+    message = f"""
+     <b>no new game found</b>
+     no new video were created
+     """
+    #sendMessage(message)
+    telegram_bot_sendtext(message)
+   else:
+    proccessList(gameList)
+    os.system('termux-vibrate -d 2000 -f')
+    gamelistJoined = '\n\n\n\n'.join(gameList)
+    message = f"""
+     <b>video making completed</b>
+     videos created: {len(gameList)}
+     games :
+     {gamelistJoined}
+     """
+    #sendMessage(message)
+    telegram_bot_sendtext(message)
+   
  
  

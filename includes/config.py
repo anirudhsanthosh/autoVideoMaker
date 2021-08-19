@@ -2,7 +2,8 @@ BASE_URL = 'https://an1.com/tags/MOD/'
 PAGE = 'page/'
 MAX_NUMBER_OF_GAMES = 15
 VIDEO_DURATION = 1
-
+BOT_TOKEN = '1873833796:AAGr3Z-kPyI21M-7tetKhhJafWyWXGSPs1Q'
+TELEGRAM_CHAT_ID = 'videomaker1234'
 # all proj directories
 dirs = dict(
 BASE_IMAGE_DIR = './images',

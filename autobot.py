@@ -288,8 +288,7 @@ else:
      """
     #sendMessage(message)
     telegram_bot_sendtext(message)
-   
-   
+
 
    
    
